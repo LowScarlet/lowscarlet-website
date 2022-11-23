@@ -20,6 +20,7 @@ import useTheme from '@mui/material/styles/useTheme';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Logo from '../components/brand/logo';
 import History from '../components/pages/index/history';
 import Portfolio from '../components/pages/index/portfolio';
 import Skill from '../components/pages/index/skill';
@@ -106,11 +107,8 @@ export default function Handler(props: any) {
               </Stack>
             </Grid>
             <Grid xs={12} md={6} sx={{ padding: 0, justifyContent: { xs: 'center', md: 'right' }, display: "flex" }}>
-              <Avatar
-                alt="Low_Scarlet"
-                src="https://github.com/LowScarlet.png?size=300"
-                sx={{ width: 300, height: 300 }}
-                style={{ border: '0.25em solid white' }}
+              <Logo size={300} 
+                sx={{ width: 300, height: 300, border: '0.25em solid white' }}
               />
             </Grid>
           </Grid>

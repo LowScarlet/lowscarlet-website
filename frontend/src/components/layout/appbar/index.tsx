@@ -20,6 +20,8 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
+import Brand from '../../brand';
+import Logo from '../../brand/logo';
 
 interface Props {
     /**
@@ -73,25 +75,7 @@ export default function HideAppBar(props: Props) {
             <AppBar component="nav">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                padding: 1
-                            }}
-                        >
-                            Low_Scarlet
-                        </Typography>
-                        
+                        <Brand avatar={true} />
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
@@ -101,7 +85,7 @@ export default function HideAppBar(props: Props) {
                                 onClick={handleOpenNavMenu}
                                 color="inherit"
                             >
-                                <MenuIcon />
+                                <Logo size={128} />
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -128,24 +112,7 @@ export default function HideAppBar(props: Props) {
                                 ))}
                             </Menu>
                         </Box>
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href=""
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Low_Scarlet
-                        </Typography>
+                        <Brand avatar={false} mobile={true} />
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((page) => (
                                 <Button
@@ -160,8 +127,15 @@ export default function HideAppBar(props: Props) {
 
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open Menu">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="https://github.com/LowScarlet.png?size=500" />
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleOpenUserMenu}
+                                    color="inherit"
+                                >
+                                    <MenuIcon />
                                 </IconButton>
                             </Tooltip>
                             <Menu
