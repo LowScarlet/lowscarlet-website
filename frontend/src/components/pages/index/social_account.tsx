@@ -47,7 +47,7 @@ const MySocial_AccountCard = (props: any) => {
                     src={avatar}
                 />
             </ListItemAvatar>
-            <ListItemText primary={<><IconComp icon={type} /> {nickname}</>} secondary={status} />
+            <ListItemText primary={<><IconComp icon={type} /> {nickname}</>} secondary={<><Typography component="span" sx={{ textTransform: 'capitalize' }}>{type}</Typography> - {status}</>} />
         </ListItemButton>
         <Divider variant="fullWidth" component="li" />
     </>)

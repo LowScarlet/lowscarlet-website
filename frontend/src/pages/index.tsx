@@ -35,13 +35,13 @@ const MyCard = () => {
           coming soon
         </Typography>
         <Typography variant="h5" component="div">
-        coming soon
+          coming soon
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        coming soon
+          coming soon
         </Typography>
         <Typography variant="body2">
-        coming soon
+          coming soon
         </Typography>
       </CardContent>
       <CardActions>
@@ -70,7 +70,7 @@ function RightBar_MoveOnScroll(props: any) {
 export default function Handler(props: any) {
   const theme = useTheme()
   const isDark = theme.palette.mode === 'dark'
-  
+
   return (<>
     <Box style={{ backgroundColor: isDark ? '#0a0a0a' : 'white' }}>
       <Container maxWidth={"xl"}>
@@ -107,7 +107,7 @@ export default function Handler(props: any) {
               </Stack>
             </Grid>
             <Grid xs={12} md={6} sx={{ padding: 0, justifyContent: { xs: 'center', md: 'right' }, display: "flex" }}>
-              <Logo size={300} 
+              <Logo size={300}
                 sx={{ width: 300, height: 300, border: '0.25em solid white' }}
               />
             </Grid>
@@ -125,6 +125,9 @@ export default function Handler(props: any) {
                   <Typography fontWeight='700' variant='h5' component="div">
                     <AssignmentIcon /> My Portfolio
                   </Typography>
+                  <Typography fontWeight='500' component="p">
+                    All current and completed projects I am working on.
+                  </Typography>
                   <Portfolio />
                 </Grid>
                 <Grid container xs={12} lg={12} direction={{ lg: 'row', md: 'row-reverse' }}>
@@ -132,11 +135,17 @@ export default function Handler(props: any) {
                     <Typography fontWeight='700' variant='h5' component="div">
                       <TimelineIcon /> Skill
                     </Typography>
+                    <Typography fontWeight='500' component="p">
+                      My current skills and experience.
+                    </Typography>
                     <Skill />
                   </Grid>
                   <Grid pt={5} xs={12} md={6} lg={12}>
                     <Typography fontWeight='700' variant='h5' component="div">
                       <HistoryToggleOffIcon /> History
+                    </Typography>
+                    <Typography fontWeight='500' component="p">
+                      My experience history.
                     </Typography>
                     <History />
                   </Grid>
@@ -150,12 +159,18 @@ export default function Handler(props: any) {
                     <Typography fontWeight='700' variant='h5' component="div">
                       <PeopleAltIcon /> My Social Account
                     </Typography>
+                    <Typography fontWeight='500' component="p">
+                      Contact me with my social account on the internet.
+                    </Typography>
                     <SocialAccount />
                   </Grid>
 
                   <Grid xs={12} sm={6} lg={12}>
                     <Typography fontWeight='700' variant='h5' component="div">
                       <InstagramIcon /> Recent Instagram Posts
+                    </Typography>
+                    <Typography fontWeight='500' component="p">
+                      My latest post on Instagram.
                     </Typography>
                     <Grid xs={12}>
                       <MyCard></MyCard>
