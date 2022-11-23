@@ -129,7 +129,7 @@ export default function Handler(props: any) {
                   </Typography>
                   <Portfolio />
                 </Grid>
-                <Grid container direction={{ lg: 'row', md: 'row-reverse' }}>
+                <Grid container xs={12} lg={12} direction={{ lg: 'row', md: 'row-reverse' }}>
                   <Grid pt={5} xs={12} md={6} lg={12}>
                     <Typography fontWeight='700' variant='h5' component="div">
                       <TimelineIcon /> Skill
