@@ -1,4 +1,4 @@
-export default function handler(res: any) {
+export default function handler(req: any, res: any) {
     const data = [
         {
             "id": 1,

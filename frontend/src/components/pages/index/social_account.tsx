@@ -58,7 +58,7 @@ export default function Main() {
     useSWR('/api/social_account', fetcher)
 
     return (<>
-        {!loading ? (<>
+        {!loading && res.data ? (<>
             <List sx={{ width: '100%', bgcolor: 'background.paper', }}>
                 {
                     res.data.map((data: any) => {
