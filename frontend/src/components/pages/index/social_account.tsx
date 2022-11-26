@@ -1,38 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Unstable_Grid2';
-import moment from 'moment';
-import Chip from '@mui/material/Chip';
-import Skeleton from '@mui/material/Skeleton';
 import { useState } from 'react';
 import useSWR from 'swr'
 import CircularProgress from '@mui/material/CircularProgress';
-import Fade from '@mui/material/Fade';
-import LinearProgress from '@mui/material/LinearProgress';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
-const IconComp = (props: any) => {
-    const { icon } = props
-    if (icon === 'instagram') return (<InstagramIcon />)
-    if (icon === 'discord') return (<VideogameAssetIcon />)
-    if (icon === 'linkedin') return (<LinkedInIcon />)
-    return (<></>)
-}
+import IconComp from '../../iconcomp/social'
 
 const MySocial_AccountCard = (props: any) => {
     const { id, nickname, status, type, avatar } = props

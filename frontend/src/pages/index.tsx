@@ -21,6 +21,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Logo from '../components/brand/logo';
+import Heroes from '../components/pages/index/heroes';
 import History from '../components/pages/index/history';
 import Portfolio from '../components/pages/index/portfolio';
 import Skill from '../components/pages/index/skill';
@@ -72,49 +73,7 @@ export default function Handler(props: any) {
   const isDark = theme.palette.mode === 'dark'
 
   return (<>
-    <Box style={{ backgroundColor: isDark ? '#0a0a0a' : 'white' }}>
-      <Container maxWidth={"xl"}>
-        <Box py={{ md: 10, xs: 5 }}>
-          <Grid container xs={12} md={12} direction={{ md: 'row', xs: 'column-reverse' }}>
-            <Grid xs={12} md={6} sx={{ textAlign: { xs: 'center', md: 'left' }, padding: 0, paddingTop: 5, paddingBottom: 5 }}>
-              <Typography component="span">
-                Hello, my nickname is
-              </Typography>
-              <Typography fontWeight='700' variant='h4' component="div">
-                Low_Scarlet
-              </Typography>
-              <Typography pt={1.5} variant='h6' component="div">
-                I am a full stack website developer from Indonesia.
-              </Typography>
-              <Box component="div">
-                <IconButton aria-label="github-icon" size="large">
-                  <GitHubIcon fontSize="inherit" />
-                </IconButton>
-                <IconButton aria-label="instagram-icon" size="large">
-                  <InstagramIcon fontSize="inherit" />
-                </IconButton>
-                <IconButton aria-label="linkedin-icon" size="large">
-                  <LinkedInIcon fontSize="inherit" />
-                </IconButton>
-              </Box>
-              <Stack direction={{ xs: 'column', md: 'row' }} alignItems="center" spacing={2} pt={2.5}>
-                <Button color="primary" variant="contained" startIcon={<SendIcon />} sx={{ borderRadius: 28, minWidth: { xs: '100%', md: '2em' } }}>
-                  About
-                </Button>
-                <Button color="secondary" variant="contained" startIcon={<SendIcon />} sx={{ borderRadius: 28, minWidth: { xs: '100%', md: '2em' } }}>
-                  Download CV
-                </Button>
-              </Stack>
-            </Grid>
-            <Grid xs={12} md={6} sx={{ padding: 0, justifyContent: { xs: 'center', md: 'right' }, display: "flex" }}>
-              <Logo size={300}
-                sx={{ width: 300, height: 300, border: '0.25em solid white' }}
-              />
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </Box>
+    <Heroes {...{isDark}}/>
     <Box>
       <Container maxWidth={"xl"}>
         <Box py={{ md: 5, xs: 2 }}>

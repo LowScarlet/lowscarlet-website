@@ -1,4 +1,4 @@
-export default function handler(req: any, res: any) {
+export default function handler(res: any) {
     const data = [
         {
             "id": 1,
@@ -19,6 +19,13 @@ export default function handler(req: any, res: any) {
             "nickname": 'Tegar maulana Fahreza',
             "status": "#tegar-maulana-fahreza",
             "type": "linkedin",
+            "avatar": ""
+        },
+        {
+            "id": 4,
+            "nickname": 'LowScarlet',
+            "status": "#LowScarlet",
+            "type": "github",
             "avatar": ""
         }
     ]

@@ -26,8 +26,8 @@ const MyPortfolioCard = (props: any) => {
                 component="a"
                 onClick={() => console.log("CardActionArea clicked")}
             >
-                <Card style={{ height: '100%' }}>
-                    <CardContent>
+                <Card style={{ height: '100%', display: "flex", flexDirection: "column" }}>
+                    <CardContent style={{ marginBottom: "auto" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                             <Stack spacing={1} direction="row" >
                                 <Chip icon={<GitHubIcon fontSize="inherit" />} size="small" variant="outlined" color={

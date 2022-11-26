@@ -10,13 +10,13 @@ export const font = Comfortaa({
 });
 
 function theme(props: any) {
-  const {isLight} = props
+  const { isLight } = props
 
   return createTheme({
     palette: {
       mode: isLight ? 'light' : 'dark',
       primary: {
-        main: isLight ? '#24A19C' :'#8443d3',
+        main: isLight ? '#24A19C' : '#8443d3',
       },
       secondary: {
         main: '#6c757d',
