@@ -18,7 +18,6 @@ export default function App(props: AppProps) {
   return (<>
     <Head>
       <meta name="viewport" content="initial-scale=1, width=device-width" />
-
     </Head>
     <ThemeProvider theme={theme({ isLight })}>
       <CssBaseline />

@@ -27,7 +27,6 @@ import Portfolio from '../components/pages/index/portfolio';
 import Skill from '../components/pages/index/skill';
 import SocialAccount from '../components/pages/index/social_account';
 
-
 const MyCard = () => {
   return (<>
     <Card style={{ height: '100%' }}>
