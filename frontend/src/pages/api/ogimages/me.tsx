@@ -32,7 +32,8 @@ export default async function handler(req: NextRequest) {
             borderRadius: 128,
           }}
         />
-        <p>github.com/LowScarlet</p>
+        <h1 style={{margin: 0}}>Low_Scarlet</h1>
+        <p>Hi 👋, Im Low_Scarlet a full stack website developer from Indonesia</p>
       </div>
     ),
     {
