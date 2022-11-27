@@ -30,7 +30,7 @@ export default function Main(props: any) {
         }
         setLoading(false)
     }
-    useSWR('/api', fetcher)
+    useSWR('/api/me', fetcher)
 
     return (<>
         <Box style={{ backgroundColor: isDark ? '#0a0a0a' : 'white' }}>
@@ -61,7 +61,7 @@ export default function Main(props: any) {
                             >
                                 <Typography pt={1.5} variant='h6' component="div">
                                     {
-                                        res.data ? (res.data.description) : ('')
+                                        res.data ? (res.data.slogan) : ('')
                                     }
                                 </Typography>
                             </Grow>
@@ -89,7 +89,7 @@ export default function Main(props: any) {
                             >
                                 <Stack direction={{ xs: 'column', md: 'row' }} alignItems="center" spacing={2} pt={2.5}>
                                     <Button color="primary" variant="contained" startIcon={<SendIcon />} sx={{ borderRadius: 28, minWidth: { xs: '100%', md: '2em' } }}>
-                                        About
+                                        My Portfolio
                                     </Button>
                                     <Button color="success" variant="outlined" startIcon={<SendIcon />} sx={{ borderRadius: 28, minWidth: { xs: '100%', md: '2em' } }}>
                                         Download CV

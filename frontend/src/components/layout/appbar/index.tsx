@@ -41,7 +41,7 @@ function HideOnScroll(props: Props) {
     );
 }
 
-const pages = ['About', 'Portfolio', 'Skill', 'History'];
+const pages = ['Portfolio', 'Skill', 'History'];
 const quick_access = ['Admin Control Panel', 'Report Bug', 'Dark Mode'];
 
 export default function HideAppBar(props: Props) {

@@ -10,10 +10,11 @@ import * as React from 'react';
 
 import MyLayout from '../components/layout'
 import Script from 'next/script';
+import { SnackbarProvider } from 'notistack';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props as any;
-  const isLight = useMediaQuery('(prefers-color-scheme: light)') ;
+  const isLight = useMediaQuery('(prefers-color-scheme: light)');
 
   return (<>
     <Head>
@@ -21,10 +22,18 @@ export default function App(props: AppProps) {
     </Head>
     <ThemeProvider theme={theme({ isLight })}>
       <CssBaseline />
-      <MyLayout>
-        <Script src="https://kit.fontawesome.com/e9cc7e48d1.js" crossOrigin="anonymous" />
-        <Component {...pageProps} />
-      </MyLayout>
+      <SnackbarProvider
+        maxSnack={6}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+      >
+        <MyLayout>
+          <Script src="https://kit.fontawesome.com/e9cc7e48d1.js" crossOrigin="anonymous" />
+          <Component {...pageProps} />
+        </MyLayout>
+      </SnackbarProvider>
     </ThemeProvider>
   </>);
 }

@@ -26,6 +26,9 @@ import History from '../components/pages/index/history';
 import Portfolio from '../components/pages/index/portfolio';
 import Skill from '../components/pages/index/skill';
 import SocialAccount from '../components/pages/index/social_account';
+import AboutMe from '../components/pages/index/aboutme';
+import { useSnackbar } from 'notistack';
+import { useEffect, useState } from 'react';
 
 const MyCard = () => {
   return (<>
@@ -68,11 +71,12 @@ function RightBar_MoveOnScroll(props: any) {
 }
 
 export default function Handler(props: any) {
+  const { enqueueSnackbar } = useSnackbar()
   const theme = useTheme()
   const isDark = theme.palette.mode === 'dark'
-
+  
   return (<>
-    <Heroes {...{isDark}}/>
+    <Heroes {...{ isDark }} />
     <Box>
       <Container maxWidth={"xl"}>
         <Box py={{ md: 5, xs: 2 }}>
