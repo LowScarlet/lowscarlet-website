@@ -1,19 +1,21 @@
 {
-    "github": {
-        "silent": true
-    },
-    "version": 2,
-    "builds": [
-      {
-        "src": "src/app.js",
-        "use": "@now/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "(.*)",
-        "dest": "src/app.js"
-      }
-    ],
-    "regions": ["sin1"]
-  }
+  "github": {
+    "silent": true
+  },
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/app.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
+  "regions": [
+    "sin1"
+  ]
+}
