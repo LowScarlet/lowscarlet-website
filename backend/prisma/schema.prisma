@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model RefreshToken {
+  id          String   @id @unique @default(uuid())
+  hashedToken String
+  userId      String
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Role {
+  MEMBER
+  MOD
+  ADMIN
+  SUPERUSER
+}
+
+enum SocialMediaType {
+  Discord
+  Instagram
+  Github
+}
+
+model User {
+  id            String         @id @unique @default(uuid())
+  username      String         @unique
+  email         String         @unique
+  emailActive   Boolean        @default(false)
+  displayName   String
+  bio           String?
+  password      String
+  role          Role           @default(MEMBER)
+  refreshTokens RefreshToken[]
+  socialMedia   SocialMedia[]
+  portfolio     Portfolio[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model SocialMedia {
+  id          String           @id @unique @default(uuid())
+  User        User             @relation(fields: [userId], references: [id])
+  userId      String
+  type        SocialMediaType?
+  nickname    String
+  displayname String
+  avatarUrl   String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model Portfolio {
+  id          String          @id @unique
+  User        User            @relation(fields: [userId], references: [id])
+  userId      String
+  nameid      String
+  title       String
+  description String
+  repository  String
+  tags        PortfolioTags[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+model PortfolioTags {
+  id          String    @id @unique
+  portfolioId String
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
+  title       String
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
