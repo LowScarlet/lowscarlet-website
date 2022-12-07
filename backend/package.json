@@ -8,8 +8,6 @@
     "lint": "eslint --fix src",
     "test": "mocha --exit"
   },
-  "keywords": [],
-  "author": "Mihai Adrian Andrei",
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^4.7.1",
