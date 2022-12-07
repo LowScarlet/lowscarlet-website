@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-len */
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { db } = require('../../utils/db');
 const {
   VALIDATION_USERNAME_1, VALIDATION_USERNAME_2, VALIDATION_USERNAME_3, VALIDATION_EMAIL_1, VALIDATION_PASSWORD_1, VALIDATION_USERNAME_4, VALIDATION_EMAIL_2, VALIDATION_PROBLEM_NOT_FOUND, VALIDATION_USERNAME_5
