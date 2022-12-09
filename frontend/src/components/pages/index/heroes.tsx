@@ -89,7 +89,7 @@ export default function Main(props: any) {
                             >
                                 <Stack direction={{ xs: 'column', md: 'row' }} alignItems="center" spacing={2} pt={2.5}>
                                     <Button color="primary" variant="contained" startIcon={<SendIcon />} sx={{ borderRadius: 28, minWidth: { xs: '100%', md: '2em' } }}>
-                                        My Portfolio
+                                        Explore
                                     </Button>
                                     <Button color="success" variant="outlined" startIcon={<SendIcon />} sx={{ borderRadius: 28, minWidth: { xs: '100%', md: '2em' } }}>
                                         Download CV

@@ -11,21 +11,15 @@ import ShareIcon from '@mui/icons-material/Share';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-const actions = [
-    { icon: <FileCopyIcon />, name: 'Copy' },
-    { icon: <SaveIcon />, name: 'Save' },
-    { icon: <PrintIcon />, name: 'Print' },
-    { icon: <ShareIcon />, name: 'Share' },
-];
-
-export default function SpeedDialTooltipOpen() {
+export default function SpeedDialTooltipOpen(props: any) {
+    const { actions } = props
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (<>
-        <Backdrop open={open} />
-        <Box display={{ xs: 'inherit', md: 'none' }} sx={{ height: 330, transform: 'translateZ(0px)', flexGrow: 1, position: 'fixed', bottom: 0, right: 0 }}>
+        <Backdrop open={open} sx={{ zIndex: 100 }} />
+        <Box display={{ xs: 'inherit', md: 'none' }} sx={{ height: 330, transform: 'translateZ(0px)', flexGrow: 1, position: 'fixed', bottom: 0, right: 0, zIndex: 100 }}>
             <SpeedDial
                 color="secondary"
                 ariaLabel="SpeedDial tooltip example"
@@ -35,7 +29,7 @@ export default function SpeedDialTooltipOpen() {
                 onOpen={handleOpen}
                 open={open}
             >
-                {actions.map((action) => (
+                {actions.map((action: any) => (
                     <SpeedDialAction
                         key={action.name}
                         icon={action.icon}

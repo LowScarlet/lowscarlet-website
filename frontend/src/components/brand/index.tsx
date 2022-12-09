@@ -26,10 +26,9 @@ export default function Brand(props: any) {
                 <Typography
                     variant="caption"
                     component="a"
-                    href="/"
                     sx={{
                         fontWeight: 200,
-                        letterSpacing: '.5rem',
+                        letterSpacing: {lg: '.5rem', sm: '.3rem', xs: '.5rem'},
                         color: 'inherit',
                         textDecoration: 'none',
                     }}

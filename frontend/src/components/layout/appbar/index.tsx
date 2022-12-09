@@ -22,6 +22,14 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Typography from "@mui/material/Typography";
+import MySpeedDial from '../speeddial'
+import ShareIcon from '@mui/icons-material/Share';
+import LoginIcon from '@mui/icons-material/Login';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import Link from '@mui/material/Link';
 
@@ -41,12 +49,11 @@ function HideOnScroll(props: any) {
     );
 }
 
-const navigation = [
-    'portofolio',
-    'skill',
-    'history',
-    'more',
-]
+const actions = [
+    { icon: <AssignmentIcon />, name: 'Portofolio' },
+    { icon: <TimelineIcon />, name: 'Skill' },
+    { icon: <HistoryToggleOffIcon />, name: 'History' },
+];
 
 export default function HideAppBar(props: any) {
     const [anchor, setAnchor] = useState<any>(null)
@@ -63,7 +70,7 @@ export default function HideAppBar(props: any) {
             <AppBar color='inherit'>
                 <Container maxWidth="xl">
                     <Grid container spacing={0}>
-                        <Grid item xs={10} md={4} sx={{ textAlign: 'left' }}>
+                        <Grid item xs={10} md={3} sx={{ textAlign: 'left' }}>
                             <Brand />
                         </Grid>
                         <Grid item py={1} xs={2} sx={{ textAlign: 'right' }} display={{ xs: 'block', md: 'none' }}>
@@ -142,50 +149,25 @@ export default function HideAppBar(props: any) {
                                         </ListItemIcon>
                                         Logout
                                     </MenuItem>
-                                    <Divider />
-                                    <li>
-                                        <Typography
-                                            pl={2} pt={1}
-                                            color="text.secondary"
-                                            display="block"
-                                            variant="caption"
-                                        >
-                                            Quick Link
-                                        </Typography>
-                                    </li>
-                                    {
-                                        navigation.map((data: any) => {
-                                            return (<>
-                                                <MenuItem style={{ textTransform: 'capitalize' }}>
-                                                    <ListItemIcon>
-                                                        <Check />
-                                                    </ListItemIcon>
-                                                    {data}
-                                                </MenuItem>
-                                            </>)
-                                        })
-                                    }
                                 </Menu>
                             </>
                         </Grid>
-                        <Grid item md={8} sx={{ textAlign: 'right' }} display={{ xs: 'none', md: 'block' }}>
-                            <Box justifyContent="flex-end" py={1.5} display='flex'>
+                        <Grid item md={9} sx={{ textAlign: 'right' }} display={{ xs: 'none', md: 'block' }}>
+                            <Box justifyContent="flex-end" py={0} display='flex'>
                                 <Tabs value={-1} aria-label="basic tabs example">
                                     {
-                                        navigation.map((data: any) => {
+                                        actions.map((data: any) => {
                                             return (<>
-                                                <Tab label={data} {...a11yProps(data)} />
+                                                <Tab iconPosition="start" icon={data.icon} label={data.name} {...a11yProps(data.name)} />
                                             </>)
                                         })
                                     }
-                                    {/* <Tab label="Portofolio" {...a11yProps(0)} />
-                                    <Tab label="Skill" {...a11yProps(1)} />
-                                    <Tab label="History" {...a11yProps(2)} />
-                                    <Tab label="More" {...a11yProps(3)} /> */}
                                 </Tabs>
-                                <Stack pl={2} py={1} direction="row" spacing={2}>
-                                    <Button size="small" color='primary' variant='outlined'>Register</Button>
-                                    <Button size="small" color='secondary' variant='outlined'>Login</Button>
+                                <Stack pl={2} py={2} direction="row" spacing={2}>
+                                    <ButtonGroup size="small" aria-label="small button group">
+                                        <Button startIcon={<AppRegistrationIcon />} size="small" color='primary' variant='outlined'>Register</Button>
+                                        <Button startIcon={<LoginIcon />} size="small" color='success' variant='outlined'>Login</Button>
+                                    </ButtonGroup>
                                 </Stack>
                             </Box>
                         </Grid>
@@ -194,6 +176,7 @@ export default function HideAppBar(props: any) {
             </AppBar>
         </HideOnScroll>
         <Toolbar />
+        <MySpeedDial {...{ actions }} />
     </>);
 }
 
