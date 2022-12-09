@@ -35,7 +35,7 @@ export default function Main(props: any) {
     return (<>
         <Box style={{ backgroundColor: isDark ? '#0a0a0a' : 'white' }}>
             <Container maxWidth={"xl"}>
-                <Box py={{ md: 10, xs: 5 }}>
+                <Box py={{ md: 10, xs: 5 }} px={{ md: 3 }}>
                     <Grid container xs={12} md={12} direction={{ md: 'row', xs: 'column-reverse' }}>
                         <Grid xs={12} md={6} sx={{ textAlign: { xs: 'center', md: 'left' }, padding: 0, paddingTop: 5, paddingBottom: 5 }}>
                             <Grow in={res.data ? true : false}>

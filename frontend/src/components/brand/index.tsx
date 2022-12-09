@@ -1,39 +1,42 @@
 import Typography from "@mui/material/Typography";
 import Logo from "./logo";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 export default function Brand(props: any) {
     const { mobile } = props
     const { avatar } = props
 
     return (<>
-        {
-            avatar ? (
-                <Logo
-                    size={128}
+        <Stack direction="row" py={1}>
+            <Stack direction="column">
+                <Typography
+                    variant="h6"
+                    component="a"
+                    href="/"
                     sx={{
-                        display: { xs: 'none', md: 'flex' }
+                        fontWeight: 700,
+                        letterSpacing: '.3rem',
+                        color: 'inherit',
+                        textDecoration: 'none',
                     }}
-                />
-            ) : null
-        }
-        <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-                mr: 2,
-                display: mobile ? ({ xs: 'flex', md: 'none' }) : ({ xs: 'none', md: 'flex' }),
-                flexGrow: mobile ? 1 : 0,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                paddingLeft: mobile ? 0 : 2,
-            }}
-        >
-            Low_Scarlet
-        </Typography>
+                >
+                    Low_Scarlet
+                </Typography>
+                <Typography
+                    variant="caption"
+                    component="a"
+                    href="/"
+                    sx={{
+                        fontWeight: 200,
+                        letterSpacing: '.5rem',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                    }}
+                >
+                    Website Developer
+                </Typography>
+            </Stack>
+        </Stack>
     </>)
 }

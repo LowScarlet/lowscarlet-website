@@ -1,34 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import SendIcon from '@mui/icons-material/Send';
 import TimelineIcon from '@mui/icons-material/Timeline';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-import Stack from '@mui/material/Stack';
 import useTheme from '@mui/material/styles/useTheme';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import Logo from '../components/brand/logo';
 import Heroes from '../components/pages/index/heroes';
 import History from '../components/pages/index/history';
 import Portfolio from '../components/pages/index/portfolio';
 import Skill from '../components/pages/index/skill';
 import SocialAccount from '../components/pages/index/social_account';
-import AboutMe from '../components/pages/index/aboutme';
-import { useSnackbar } from 'notistack';
-import { useEffect, useState } from 'react';
+import MyAppBar from '../components/layout/appbar'
 
 const MyCard = () => {
   return (<>
@@ -56,9 +47,6 @@ const MyCard = () => {
 
 function RightBar_MoveOnScroll(props: any) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
@@ -71,11 +59,11 @@ function RightBar_MoveOnScroll(props: any) {
 }
 
 export default function Handler(props: any) {
-  const { enqueueSnackbar } = useSnackbar()
   const theme = useTheme()
   const isDark = theme.palette.mode === 'dark'
-  
+
   return (<>
+    <MyAppBar {...{ isDark }} />
     <Heroes {...{ isDark }} />
     <Box>
       <Container maxWidth={"xl"}>

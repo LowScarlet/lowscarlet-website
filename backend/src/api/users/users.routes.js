@@ -29,7 +29,7 @@ router.get('', async (req, res, next) => {
   }
 });
 
-router.get('/:username', async (req, res, next) => {
+router.get('/:username/:other', async (req, res, next) => {
   const { user } = req;
   const { username } = req.params;
 
