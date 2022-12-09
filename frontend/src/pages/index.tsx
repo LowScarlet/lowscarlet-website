@@ -20,6 +20,7 @@ import Portfolio from '../components/pages/index/portfolio';
 import Skill from '../components/pages/index/skill';
 import SocialAccount from '../components/pages/index/social_account';
 import MyAppBar from '../components/layout/appbar'
+import MyFootBar from '../components/layout/footer'
 
 const MyCard = () => {
   return (<>
@@ -64,6 +65,7 @@ export default function Handler(props: any) {
 
   return (<>
     <MyAppBar {...{ isDark }} />
+
     <Heroes {...{ isDark }} />
     <Box>
       <Container maxWidth={"xl"}>
@@ -133,5 +135,6 @@ export default function Handler(props: any) {
         </Box>
       </Container>
     </Box>
+    <MyFootBar/>
   </>);
 }

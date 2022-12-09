@@ -5,24 +5,25 @@ import Container from '@mui/material/Container';
 import Slide from '@mui/material/Slide';
 import Toolbar from '@mui/material/Toolbar';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import * as React from 'react';
 
 import Brand from '../../brand';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
-import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Check from '@mui/icons-material/Check';
 import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Avatar from '@mui/material/Avatar';
+import Typography from "@mui/material/Typography";
+
+import Link from '@mui/material/Link';
 
 function HideOnScroll(props: any) {
     const { children, window } = props;
@@ -40,8 +41,14 @@ function HideOnScroll(props: any) {
     );
 }
 
+const navigation = [
+    'portofolio',
+    'skill',
+    'history',
+    'more',
+]
+
 export default function HideAppBar(props: any) {
-    const { isDark } = props
     const [anchor, setAnchor] = useState<any>(null)
     const open = Boolean(anchor);
     function a11yProps(index: number) {
@@ -59,7 +66,7 @@ export default function HideAppBar(props: any) {
                         <Grid item xs={10} md={4} sx={{ textAlign: 'left' }}>
                             <Brand />
                         </Grid>
-                        <Grid item py={2} xs={2} sx={{ textAlign: 'right' }} display={{ xs: 'block', md: 'none' }}>
+                        <Grid item py={1} xs={2} sx={{ textAlign: 'right' }} display={{ xs: 'block', md: 'none' }}>
                             <>
                                 <IconButton
                                     aria-label="more"
@@ -70,7 +77,7 @@ export default function HideAppBar(props: any) {
                                         setAnchor(e.currentTarget)
                                     }}
                                 >
-                                    <MoreVertIcon />
+                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                                 </IconButton>
 
                                 <Menu
@@ -80,42 +87,101 @@ export default function HideAppBar(props: any) {
                                         setAnchor(null)
                                     }}
                                 >
-                                    <MenuItem>
-                                        <ListItemText inset>Single</ListItemText>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <ListItemText inset>1.15</ListItemText>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <ListItemText inset>Double</ListItemText>
-                                    </MenuItem>
-                                    <MenuItem>
+                                    <Box p={2}>
+                                        <Stack
+                                            direction="row"
+                                        >
+                                            <Avatar alt="Low_Scarlet" src={`https://github.com/LowScarlet.png?size=128`} />
+
+                                            <Stack
+                                                pl={2}
+                                                direction="column"
+                                            >
+                                                <Typography
+                                                    variant="h6"
+                                                    component="a"
+                                                    href="/"
+                                                    sx={{
+                                                        fontWeight: 700,
+                                                        letterSpacing: '.3rem',
+                                                        color: 'inherit',
+                                                        textDecoration: 'none',
+                                                    }}
+                                                >
+                                                    LowScarlet
+                                                </Typography>
+                                                <Link
+                                                    underline="hover"
+                                                    component="button"
+                                                    variant="body2"
+                                                    onClick={() => {
+                                                        console.info("I'm a button.");
+                                                    }}
+                                                    style={{ textAlign: 'left' }}
+                                                >
+                                                    Manage your account!
+                                                </Link>
+
+                                            </Stack>
+                                        </Stack>
+                                    </Box>
+                                    <Divider />
+                                    <li>
+                                        <Typography
+                                            pl={2} pt={1}
+                                            color="text.secondary"
+                                            display="block"
+                                            variant="caption"
+                                        >
+                                            Account
+                                        </Typography>
+                                    </li>
+                                    <MenuItem style={{ textTransform: 'capitalize' }}>
                                         <ListItemIcon>
                                             <Check />
                                         </ListItemIcon>
-                                        Custom: 1.2
+                                        Logout
                                     </MenuItem>
                                     <Divider />
-                                    <MenuItem>
-                                        <ListItemText>Add space before paragraph</ListItemText>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <ListItemText>Add space after paragraph</ListItemText>
-                                    </MenuItem>
-                                    <Divider />
-                                    <MenuItem>
-                                        <ListItemText>Custom spacing...</ListItemText>
-                                    </MenuItem>
+                                    <li>
+                                        <Typography
+                                            pl={2} pt={1}
+                                            color="text.secondary"
+                                            display="block"
+                                            variant="caption"
+                                        >
+                                            Quick Link
+                                        </Typography>
+                                    </li>
+                                    {
+                                        navigation.map((data: any) => {
+                                            return (<>
+                                                <MenuItem style={{ textTransform: 'capitalize' }}>
+                                                    <ListItemIcon>
+                                                        <Check />
+                                                    </ListItemIcon>
+                                                    {data}
+                                                </MenuItem>
+                                            </>)
+                                        })
+                                    }
                                 </Menu>
                             </>
                         </Grid>
                         <Grid item md={8} sx={{ textAlign: 'right' }} display={{ xs: 'none', md: 'block' }}>
                             <Box justifyContent="flex-end" py={1.5} display='flex'>
-                                <Tabs value={0} aria-label="basic tabs example">
-                                    <Tab label="Portofolio" {...a11yProps(0)} />
+                                <Tabs value={-1} aria-label="basic tabs example">
+                                    {
+                                        navigation.map((data: any) => {
+                                            return (<>
+                                                <Tab label={data} {...a11yProps(data)} />
+                                            </>)
+                                        })
+                                    }
+                                    {/* <Tab label="Portofolio" {...a11yProps(0)} />
                                     <Tab label="Skill" {...a11yProps(1)} />
                                     <Tab label="History" {...a11yProps(2)} />
-                                    <Tab label="More" {...a11yProps(3)} />
+                                    <Tab label="More" {...a11yProps(3)} /> */}
                                 </Tabs>
                                 <Stack pl={2} py={1} direction="row" spacing={2}>
                                     <Button size="small" color='primary' variant='outlined'>Register</Button>
