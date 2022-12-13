@@ -21,6 +21,7 @@ import Skill from '../components/pages/index/skill';
 import SocialAccount from '../components/pages/index/social_account';
 import MyAppBar from '../components/layout/appbar'
 import MyFootBar from '../components/layout/footer'
+import Head from 'next/head'
 
 const MyCard = () => {
   return (<>
@@ -64,6 +65,9 @@ export default function Handler(props: any) {
   const isDark = theme.palette.mode === 'dark'
 
   return (<>
+    <Head>
+      <title>LowScarlet - Personal Website</title>
+    </Head>
     {/* AppBar */}
     <MyAppBar {...{ isDark }} />
 
