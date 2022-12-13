@@ -9,8 +9,8 @@ const SEO = {
         images: [
             {
                 url: 'https://github.com/LowScarlet.png',
-                width: 1200,
-                height: 406,
+                width: 400,
+                height: 400,
                 alt: 'Banner',
                 type: 'image/png',
             },
