@@ -17,6 +17,14 @@ import LinearProgress from '@mui/material/LinearProgress';
 const MySkillCard = (props: any) => {
     const { id, title, description, grade, tags } = props
 
+    function titleCase(str: any) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+        return str.join(' ');
+    }
+
     return (<>
         <Fade in={true}>
             <Card style={{ height: '100%' }}>
@@ -27,7 +35,7 @@ const MySkillCard = (props: any) => {
                                 tags ? (
                                     tags.map((d: any) => {
                                         return (<>
-                                            <Chip label={d} color="primary" size="small" variant="outlined" />
+                                            <Chip label={titleCase(d)} color="primary" size="small" variant="outlined" />
                                         </>)
                                     })
                                 ) : (<Skeleton width="30%" />)

@@ -64,8 +64,10 @@ export default function Handler(props: any) {
   const isDark = theme.palette.mode === 'dark'
 
   return (<>
+    {/* AppBar */}
     <MyAppBar {...{ isDark }} />
 
+    {/* Content */}
     <Heroes {...{ isDark }} />
     <Box>
       <Container maxWidth={"xl"}>
@@ -135,6 +137,6 @@ export default function Handler(props: any) {
         </Box>
       </Container>
     </Box>
-    <MyFootBar/>
+    <MyFootBar />
   </>);
 }

@@ -1,12 +1,7 @@
 import Typography from "@mui/material/Typography";
-import Logo from "./logo";
-import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
 export default function Brand(props: any) {
-    const { mobile } = props
-    const { avatar } = props
-
     return (<>
         <Stack direction="row" py={1}>
             <Stack direction="column">
@@ -21,7 +16,7 @@ export default function Brand(props: any) {
                         textDecoration: 'none',
                     }}
                 >
-                    Low_Scarlet
+                    LowScarlet
                 </Typography>
                 <Typography
                     variant="caption"

@@ -16,9 +16,18 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Fade from '@mui/material/Fade';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import CardActionArea from "@mui/material/CardActionArea";
+import InfoIcon from '@mui/icons-material/Info';
 
 const MyPortfolioCard = (props: any) => {
     const { id, title, description, date_time, tags, open_source } = props
+
+    function titleCase(str: any) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+        return str.join(' ');
+    }
 
     return (<>
         <Fade in={true} style={{ height: '100%' }}>
@@ -39,7 +48,7 @@ const MyPortfolioCard = (props: any) => {
                                     tags ? (
                                         tags.map((d: any) => {
                                             return (<>
-                                                <Chip label={d} color="primary" size="small" variant="outlined" />
+                                                <Chip label={titleCase(d)} color="primary" size="small" variant="outlined" />
                                             </>)
                                         })
                                     ) : (<Skeleton width="30%" />)
@@ -64,7 +73,7 @@ const MyPortfolioCard = (props: any) => {
                         }
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Learn More</Button>
+                        <Button size="small" startIcon={<InfoIcon />}>Show Details</Button>
                     </CardActions>
                 </Card>
             </CardActionArea>
