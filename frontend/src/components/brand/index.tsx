@@ -23,7 +23,7 @@ export default function Brand(props: any) {
                     component="a"
                     sx={{
                         fontWeight: 200,
-                        letterSpacing: {lg: '.5rem', sm: '.3rem', xs: '.5rem'},
+                        letterSpacing: {lg: '.5rem', sm: '.3rem', xs: '.2rem'},
                         color: 'inherit',
                         textDecoration: 'none',
                     }}

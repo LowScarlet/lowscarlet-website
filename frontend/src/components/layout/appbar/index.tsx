@@ -54,6 +54,7 @@ const actions = [
 
 export default function HideAppBar(props: any) {
     const [anchor, setAnchor] = useState<any>(null)
+    const [isLogin, setIsLogin] = useState(true)
     const open = Boolean(anchor);
     function a11yProps(index: number) {
         return {
@@ -64,112 +65,163 @@ export default function HideAppBar(props: any) {
 
     return (<>
         <HideOnScroll {...props}>
-            <AppBar color='inherit'>
+            <AppBar color='inherit' component="nav">
                 <Container maxWidth="xl">
-                    <Grid container spacing={0}>
-                        <Grid item xs={10} md={3} sx={{ textAlign: 'left' }}>
-                            <Brand />
-                        </Grid>
-                        <Grid item py={1} xs={2} sx={{ textAlign: 'right' }} display={{ xs: 'block', md: 'none' }}>
-                            <>
-                                <IconButton
-                                    aria-label="more"
-                                    aria-controls={open ? 'long-menu' : undefined}
-                                    aria-expanded={open ? 'true' : undefined}
-                                    aria-haspopup="true"
-                                    onClick={(e) => {
-                                        setAnchor(e.currentTarget)
-                                    }}
-                                >
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                </IconButton>
-
-                                <Menu
-                                    open={open}
-                                    anchorEl={anchor}
-                                    onClose={() => {
-                                        setAnchor(null)
-                                    }}
-                                >
-                                    <Box p={2}>
-                                        <Stack
-                                            direction="row"
-                                        >
-                                            <Avatar alt="Low_Scarlet" src={`https://github.com/LowScarlet.png?size=128`} />
-
-                                            <Stack
-                                                pl={2}
-                                                direction="column"
-                                            >
-                                                <Typography
-                                                    variant="h6"
-                                                    component="a"
-                                                    href="/"
-                                                    sx={{
-                                                        fontWeight: 700,
-                                                        letterSpacing: '.3rem',
-                                                        color: 'inherit',
-                                                        textDecoration: 'none',
-                                                    }}
-                                                >
-                                                    LowScarlet
-                                                </Typography>
-                                                <Link
-                                                    underline="hover"
-                                                    component="button"
-                                                    variant="body2"
-                                                    onClick={() => {
-                                                        console.info("I'm a button.");
-                                                    }}
-                                                    style={{ textAlign: 'left' }}
-                                                >
-                                                    Manage your account!
-                                                </Link>
-
+                    <Toolbar>
+                        <Grid container>
+                            <Grid item xs={9} sm={7} md={3}>
+                                <Brand />
+                            </Grid>
+                            <Grid item xs={4} md={6} justifyContent="center" display={{ xs: 'none', md: 'flex' }}>
+                                <Box >
+                                    <Tabs
+                                        value={0}
+                                        textColor="secondary"
+                                        indicatorColor="primary"
+                                        aria-label="secondary tabs example"
+                                    >
+                                        {
+                                            actions.map((data: any) => {
+                                                return (<>
+                                                    <Tab iconPosition="start" icon={data.icon} label={data.name} {...a11yProps(data.name)} />
+                                                </>)
+                                            })
+                                        }
+                                    </Tabs>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={3} sm={5} md={3} lg={3}>
+                                {
+                                    isLogin ? (
+                                        <Box py={1.25} display={'flex'} justifyContent="flex-end">
+                                            <Stack direction="row" py={1}>
+                                                <Stack direction="column" textAlign={'end'} display={{ xs: 'none', sm: 'flex' }}>
+                                                    <Typography
+                                                        variant="caption"
+                                                        component="a"
+                                                        href="/"
+                                                        sx={{
+                                                            fontWeight: 700,
+                                                            letterSpacing: '.3rem',
+                                                            color: 'inherit',
+                                                            textDecoration: 'none',
+                                                        }}
+                                                    >
+                                                        LowScarlet
+                                                    </Typography>
+                                                    <Typography
+                                                        variant="caption"
+                                                        component="a"
+                                                        sx={{
+                                                            fontWeight: 200,
+                                                            color: 'inherit',
+                                                            textDecoration: 'none',
+                                                        }}
+                                                    >
+                                                        Welcome, LowScarlet
+                                                    </Typography>
+                                                </Stack>
                                             </Stack>
-                                        </Stack>
-                                    </Box>
-                                    <Divider />
-                                    <li>
-                                        <Typography
-                                            pl={2} pt={1}
-                                            color="text.secondary"
-                                            display="block"
-                                            variant="caption"
-                                        >
-                                            Account
-                                        </Typography>
-                                    </li>
-                                    <MenuItem style={{ textTransform: 'capitalize' }}>
-                                        <ListItemIcon>
-                                            <Check />
-                                        </ListItemIcon>
-                                        Logout
-                                    </MenuItem>
-                                </Menu>
-                            </>
+                                            <IconButton sx={{ width: 55, height: 55 }}
+                                                aria-controls={open ? 'long-menu' : undefined}
+                                                aria-expanded={open ? 'true' : undefined}
+                                                aria-haspopup="true"
+                                                onClick={(e) => {
+                                                    setAnchor(e.currentTarget)
+                                                }}>
+                                                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                            </IconButton>
+                                        </Box>
+                                    ) : (<>
+                                        <Box py={1.25} display={{ xs: 'flex', sm: 'none' }} justifyContent="flex-end">
+                                            <IconButton size="small"
+                                                aria-controls={open ? 'long-menu' : undefined}
+                                                aria-expanded={open ? 'true' : undefined}
+                                                aria-haspopup="true"
+                                                onClick={(e) => {
+                                                    setAnchor(e.currentTarget)
+                                                }}>
+                                                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                            </IconButton>
+                                        </Box>
+                                        <Box height={'100%'} py={2} display={{ xs: 'none', sm: 'flex' }} justifyContent="flex-end">
+                                            <Stack direction="row" spacing={2}>
+                                                <ButtonGroup size="small" aria-label="small button group">
+                                                    <Button startIcon={<AppRegistrationIcon />} size="small" color='primary' variant='outlined'>Register</Button>
+                                                    <Button startIcon={<LoginIcon />} size="small" color='success' variant='outlined'>Login</Button>
+                                                </ButtonGroup>
+                                            </Stack>
+                                        </Box>
+                                    </>)
+                                }
+                            </Grid>
                         </Grid>
-                        <Grid item md={9} sx={{ textAlign: 'right' }} display={{ xs: 'none', md: 'block' }}>
-                            <Box justifyContent="flex-end" py={0} display='flex'>
-                                <Tabs value={-1} aria-label="basic tabs example">
-                                    {
-                                        actions.map((data: any) => {
-                                            return (<>
-                                                <Tab iconPosition="start" icon={data.icon} label={data.name} {...a11yProps(data.name)} />
-                                            </>)
-                                        })
-                                    }
-                                </Tabs>
-                                <Stack pl={2} py={2} direction="row" spacing={2}>
-                                    <ButtonGroup size="small" aria-label="small button group">
-                                        <Button startIcon={<AppRegistrationIcon />} size="small" color='primary' variant='outlined'>Register</Button>
-                                        <Button startIcon={<LoginIcon />} size="small" color='success' variant='outlined'>Login</Button>
-                                    </ButtonGroup>
-                                </Stack>
-                            </Box>
-                        </Grid>
-                    </Grid>
+                    </Toolbar>
                 </Container>
+
+                <Menu
+                    open={open}
+                    anchorEl={anchor}
+                    onClose={() => {
+                        setAnchor(null)
+                    }}
+                >
+                    <Box p={2}>
+                        <Stack
+                            direction="row"
+                        >
+                            <Avatar alt="Low_Scarlet" src={`https://github.com/LowScarlet.png?size=128`} />
+
+                            <Stack
+                                pl={2}
+                                direction="column"
+                            >
+                                <Typography
+                                    variant="h6"
+                                    component="a"
+                                    href="/"
+                                    sx={{
+                                        fontWeight: 700,
+                                        letterSpacing: '.3rem',
+                                        color: 'inherit',
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    LowScarlet
+                                </Typography>
+                                <Link
+                                    underline="hover"
+                                    component="button"
+                                    variant="body2"
+                                    onClick={() => {
+                                        console.info("I'm a button.");
+                                    }}
+                                    style={{ textAlign: 'left' }}
+                                >
+                                    Manage your account!
+                                </Link>
+
+                            </Stack>
+                        </Stack>
+                    </Box>
+                    <Divider />
+                    <li>
+                        <Typography
+                            pl={2} pt={1}
+                            color="text.secondary"
+                            display="block"
+                            variant="caption"
+                        >
+                            Account
+                        </Typography>
+                    </li>
+                    <MenuItem style={{ textTransform: 'capitalize' }}>
+                        <ListItemIcon>
+                            <Check />
+                        </ListItemIcon>
+                        Logout
+                    </MenuItem>
+                </Menu>
             </AppBar>
         </HideOnScroll>
         <Toolbar />
@@ -177,67 +229,106 @@ export default function HideAppBar(props: any) {
     </>);
 }
 
-{/* <Toolbar>
-<Brand avatar={true} />
-<Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-    <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
-        onClick={handleOpenNavMenu}
-        color="inherit"
-    >
-        <Logo size={128} />
-    </IconButton>
-</Box>
-<Brand avatar={false} mobile={true} />
-<Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-    {pages.map((page) => (
-        <Button
-            key={page}
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: 'white', display: 'block' }}
-        >
-            {page}
-        </Button>
-    ))}
-</Box>
-
-<Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
-    <Tooltip title="Open Menu">
+{/* <Grid container spacing={0}>
+<Grid item xs={10} md={3} sx={{ textAlign: 'left' }}>
+    <Brand />
+</Grid>
+<Grid item py={1} xs={2} sx={{ textAlign: 'right' }} display={{ xs: 'block', md: 'none' }}>
+    <>
         <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
+            aria-label="more"
+            aria-controls={open ? 'long-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
             aria-haspopup="true"
-            onClick={handleOpenUserMenu}
-            color="inherit"
+            onClick={(e) => {
+                setAnchor(e.currentTarget)
+            }}
         >
-            <MenuIcon />
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </IconButton>
-    </Tooltip>
-    <Menu
-        sx={{ mt: '45px' }}
-        id="menu-appbar"
-        anchorEl={anchorElUser}
-        anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-        }}
-        keepMounted
-        transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-        }}
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-    >
-        {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">{page}</Typography>
+
+        <Menu
+            open={open}
+            anchorEl={anchor}
+            onClose={() => {
+                setAnchor(null)
+            }}
+        >
+            <Box p={2}>
+                <Stack
+                    direction="row"
+                >
+                    <Avatar alt="Low_Scarlet" src={`https://github.com/LowScarlet.png?size=128`} />
+
+                    <Stack
+                        pl={2}
+                        direction="column"
+                    >
+                        <Typography
+                            variant="h6"
+                            component="a"
+                            href="/"
+                            sx={{
+                                fontWeight: 700,
+                                letterSpacing: '.3rem',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            LowScarlet
+                        </Typography>
+                        <Link
+                            underline="hover"
+                            component="button"
+                            variant="body2"
+                            onClick={() => {
+                                console.info("I'm a button.");
+                            }}
+                            style={{ textAlign: 'left' }}
+                        >
+                            Manage your account!
+                        </Link>
+
+                    </Stack>
+                </Stack>
+            </Box>
+            <Divider />
+            <li>
+                <Typography
+                    pl={2} pt={1}
+                    color="text.secondary"
+                    display="block"
+                    variant="caption"
+                >
+                    Account
+                </Typography>
+            </li>
+            <MenuItem style={{ textTransform: 'capitalize' }}>
+                <ListItemIcon>
+                    <Check />
+                </ListItemIcon>
+                Logout
             </MenuItem>
-        ))}
-    </Menu>
-</Box>
-</Toolbar> */}
+        </Menu>
+    </>
+</Grid>
+<Grid item md={9} sx={{ textAlign: 'right' }} display={{ xs: 'none', md: 'block' }}>
+    <Box justifyContent="flex-end" py={0} display='flex'>
+        <Tabs value={-1} aria-label="basic tabs example">
+            {
+                actions.map((data: any) => {
+                    return (<>
+                        <Tab iconPosition="start" icon={data.icon} label={data.name} {...a11yProps(data.name)} />
+                    </>)
+                })
+            }
+        </Tabs>
+        <Stack pl={2} py={2} direction="row" spacing={2}>
+            <ButtonGroup size="small" aria-label="small button group">
+                <Button startIcon={<AppRegistrationIcon />} size="small" color='primary' variant='outlined'>Register</Button>
+                <Button startIcon={<LoginIcon />} size="small" color='success' variant='outlined'>Login</Button>
+            </ButtonGroup>
+        </Stack>
+    </Box>
+</Grid>
+</Grid> */}
